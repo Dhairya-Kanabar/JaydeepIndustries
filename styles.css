@@ -342,6 +342,17 @@ body {
   font-size: 1rem;
 }
 
+.footer a {
+  color: var(--yellow);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -626,4 +637,14 @@ body {
 
 .address-text br + * {
   display: none;
+}
+
+.developer-credit {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.developer-name {
+  color: var(--yellow);
+  font-weight: 500;
 } 
