@@ -647,4 +647,108 @@ body {
 .developer-name {
   color: var(--yellow);
   font-weight: 500;
+}
+
+/* Mobile navigation improvements */
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Additional responsive styles for mobile */
+@media (max-width: 480px) {
+  .container {
+    width: 95%;
+  }
+  
+  .section {
+    padding: 50px 0;
+  }
+  
+  .home-section h1 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+  
+  .home-section p {
+    font-size: 0.95rem;
+  }
+  
+  .home-section blockquote {
+    font-size: 1.1rem;
+    padding: 0.8rem;
+  }
+  
+  .product-card {
+    flex: 0 0 85%;
+  }
+  
+  .product-card .img-container {
+    height: 200px;
+  }
+  
+  .address-indent {
+    padding-left: 0;
+    display: block;
+    margin-top: 0.3rem;
+  }
+  
+  .contact-details strong {
+    min-width: auto;
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+  
+  .nav-container {
+    height: 70px;
+  }
+  
+  .logo {
+    font-size: 1.2rem;
+  }
+  
+  .logo-img {
+    width: 120px;
+    height: 40px;
+  }
+  
+  .nav-links {
+    top: 70px;
+    width: 100%;
+    right: 0;
+    z-index: 1000;
+    border-radius: 0;
+  }
+  
+  .contact-card {
+    padding: 1rem;
+  }
+  
+  .footer {
+    padding: 1rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .developer-credit {
+    display: block;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Fix for address line on medium sized screens */
+@media (max-width: 768px) {
+  .address-line {
+    padding-left: 30px;
+  }
+  
+  .inline-icon {
+    top: 2px;
+  }
 } 

@@ -1,10 +1,50 @@
-// Mobile nav toggle
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.querySelector('.nav-links');
-
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
+/* JavaScript for mobile menu toggle */
+document.addEventListener('DOMContentLoaded', function() {
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (navToggle) {
+    navToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('open');
+      navToggle.classList.toggle('active');
+    });
+  }
+  
+  // Add intersection observer for section animations
+  const sections = document.querySelectorAll('.section');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+  
+  sections.forEach(section => {
+    observer.observe(section);
+  });
 });
+
+// Force mobile responsive view (meta viewport is already set in HTML)
+function checkMobileView() {
+  // Add any additional mobile-specific adjustments here if needed
+  if (window.innerWidth <= 480) {
+    // Adjust for smallest screens
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (e.currentTarget === e.target) {
+          this.classList.toggle('active');
+        }
+      });
+    });
+  }
+}
+
+window.addEventListener('resize', checkMobileView);
+window.addEventListener('load', checkMobileView);
 
 // Close nav on link click (mobile)
 document.querySelectorAll('.nav-links a').forEach(link => {
@@ -23,22 +63,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
-
-// Scroll animation for sections
-const sections = document.querySelectorAll('.section');
-
-function revealSections() {
-  const triggerBottom = window.innerHeight * 0.85;
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-    if (sectionTop < triggerBottom) {
-      section.classList.add('visible');
-    }
-  });
-}
-
-window.addEventListener('scroll', revealSections);
-window.addEventListener('DOMContentLoaded', revealSections);
 
 // Horizontal scrolling carousel for products
 const productsGrid = document.querySelector('.products-grid');
